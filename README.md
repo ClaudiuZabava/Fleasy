@@ -2,7 +2,7 @@
 Documentatie
 
 ## :clipboard: MySQL database - Baza de date - entitati
-![DB schema](https://github.com/bottestBot/Fleasy/blob/main/DB.png?raw=true)
+![DB schema](https://github.com/Fleasy/blob/main/DB.png?raw=true)
 
 ## :briefcase: REST ENDPOINTS - CRUD - Functionalitati
 ### CREATE
