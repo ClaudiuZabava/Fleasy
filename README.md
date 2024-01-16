@@ -29,17 +29,16 @@ Documentatie
 3. Stergerea unei programari / booking
    
 ## :next_track_button: Testing
-Code coverage total obtinut 69.7%
 
-![Tests](https://github.com/bottestBot/Cinema-Management-Backend/blob/main/test.png?raw=true)
+![Tests](https://github.com/ClaudiuZabava/Fleasy/blob/main/Test.png?raw=true)
 
 Au fost create atat teste de integrare pentru controllers cat si unit teste pentru servicii.
 
-Testele de integrare au fost facute pentru *UserController* si *ScheduleController* acoperind cate o functionalitate CRUD.
+Testele de integrare au fost facute pentru *PassengerController* si *ScheduleController* acoperind cate o functionalitate CRUD.
 ```Java
-@WebMvcTest(controllers = UserController.class) // this tells Spring Boot to auto-configure a Spring web context
+@WebMvcTest(controllers = PassengerController.class) // this tells Spring Boot to auto-configure a Spring web context
 												// for integration tests for the PassengerController class
-public class UserControllerTest {
+public class PassengerControllerTest {
 
 	@Autowired
 	private MockMvc mockMvc;
@@ -47,20 +46,20 @@ public class UserControllerTest {
 	@Autowired
 	private ObjectMapper objectMapper;
 	@MockBean
-	private UserService userService;
+	private PassengerService PassengerService;
 	@MockBean
 	private bookingService resevrationService;
 	@MockBean
-	private UserMapper userMapper;
+	private PassengerMapper PassengerMapper;
 
 	@Test
-	public void createUser() throws Exception {
-		UserRequest request = new UserRequest("testbot26@gmail.com", "bot", "test-Bot");
+	public void createPassenger() throws Exception {
+		PassengerRequest request = new PassengerRequest("testbot26@gmail.com", "bot", "test-Bot");
 
-		when(userService.createUser(any())).thenReturn(new User(1, "testbot26@gmail.com", "bot", "test-Bot"));
+		when(PassengerService.createPassenger(any())).thenReturn(new Passenger(1, "testbot26@gmail.com", "bot", "test-Bot"));
 
 		mockMvc.perform(
-				post("/users").contentType("application/json").content(objectMapper.writeValueAsString(request)))
+				post("/Passengers").contentType("application/json").content(objectMapper.writeValueAsString(request)))
 				.andExpect(status().isCreated()).andExpect(jsonPath("$.lastName").value(request.getLastName()))
 				.andExpect(jsonPath("$.firstName").value(request.getFirstName()))
 				.andExpect(jsonPath("$.email").value(request.getEmail()));
@@ -159,12 +158,12 @@ public class flightService {
 ## Repositories
 - Fiecare entitate are asociata cate o interfata care extinde *JpaRepository<Entitate, Tip_ID>* unde au fost definite metodele care nu se aflau in interfata de baza (cele existente deja: findById, findAllById, delete, save etc...) 
 ```Java
-public interface UserRepository extends JpaRepository<User, Integer> {
+public interface PassengerRepository extends JpaRepository<Passenger, Integer> {
 
 	@Query(value = "select * from passenger where first_name = :name", nativeQuery = true)
-	User findUserByFirstNameWithNativeQuery(String name);
+	Passenger findPassengerByFirstNameWithNativeQuery(String name);
 
-	Optional<User> findByEmail(String email);
+	Optional<Passenger> findByEmail(String email);
 
 }
 ```
@@ -173,11 +172,11 @@ public interface UserRepository extends JpaRepository<User, Integer> {
 - Clasele de tip *@Component* cu scopul maparii entitatilor de tip request in entitati folosite ca model in baza de date au fost create pentru fiecare entitate in parte, continand un singur constructor cu parametrii
 ```Java
 @Component
-public class UserMapper {
+public class PassengerMapper {
 
-	public User userRequestToUser(UserRequest passengerRequest) {
+	public Passenger PassengerRequestToPassenger(PassengerRequest passengerRequest) {
 
-		return new User(passengerRequest.getEmail(), passengerRequest.getLastName(), passengerRequest.getFirstName());
+		return new Passenger(passengerRequest.getEmail(), passengerRequest.getLastName(), passengerRequest.getFirstName());
 	}
 }
 ```
