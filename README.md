@@ -6,27 +6,27 @@ Documentatie
 
 ## :briefcase: REST ENDPOINTS - CRUD - Functionalitati
 ### CREATE
-1. Adaugare film
-2. Adaugare filme printr-un JSON cu o lista de filme
-3. Adaugare sala + generare automata locuri din sala in ordine crescatoare incepand cu 1
-4. Adaugare sali printr-un JSON cu o lista de sali + enerare automata locuri din sala in ordine crescatoare incepand cu 1
-5. Adaugare passenger + duplicate exception pentru email
-6. Adaugarea unei rezervari facuta de un passenger, pentru un anumit film, la o anumita data si ora, cu un numar de locuri dat
-7. Adaugare programare film intr-o anumita sala, la o anumita data si ora
+1. Adaugare destinatie
+2. Adaugare destinatie printr-un JSON cu o lista de destinatii
+3. Adaugare avion + generare automata locuri din avion in ordine crescatoare incepand cu 1
+4. Adaugare avioane printr-un JSON cu o lista de avioane + enerare automata locuri din avion in ordine crescatoare incepand cu 1
+5. Adaugare pasager ( user ) + duplicate exception pentru email
+6. Adaugarea unei rezervari / booking facut de un passenger, la o destinatie cu o anumita data si ora, pentru un numar de locuri dat
+7. Adaugare programare zbor spre o destinatie intr-un anumit avion la o anumita data si ora
 ### UPDATE
-1. Modificarea programului (data si ora de inceput/sfarsit) a unui film 
-2. Modificarea salii in care un film este programat
+1. Modificarea programului (data si ora de plecare si aterizare la destinatie) a unui zbor
+2. Modificarea avionului si a zborului catre o destinatie
 ### GET
-1. Afisarea locurilor libere la un anumit film programat sa ruleze + not found exception
+1. Afisarea locurilor libere din avion + not found exception
 2. Afisarea informatiilor unui passenger + not found exception
-3. Afisarea informatiilor unei sali (cu tot cu locurile autogenerate) + not found exception
-4. Afisarea informatiilor despre programarea unui film + not found exception
-5. Afisarea informatiilor despre o rezervare + not found exception
-6. Afisarea informatiilor despre un film + not found exception
+3. Afisarea informatiilor unui zbor (cu tot cu locurile autogenerate) + not found exception
+4. Afisarea informatiilor despre o destinatie + not found exception
+5. Afisarea informatiilor despre o rezervare / booking + not found exception
+6. Afisarea informatiilor despre un avion + not found exception
 ### DELETE
-1. Stergerea unui passenger si a rezervarilor aferente acestuia
-2. Anularea unei rezervari
-3. Stergerea unei programari a unui film
+1. Stergerea unui passenger si a programarilor de zbor aferente acestuia
+2. Anularea unei programari / booking
+3. Stergerea unei programari / booking
    
 ## :next_track_button: Testing
 Code coverage total obtinut 69.7%
@@ -97,23 +97,23 @@ public class airplaneServiceTest {
 ```
 ## Controllers 
 Exista 7 controllere create cate una pentru fiecare entitate in parte.
-- UserController /users
+- PassengerController /passengers
 - ScheduleController /schedules
-- destinationController /destinations
-- airplaneController /airplanes
+- DestinationController /destinations
+- AirplaneController /airplanes
 - SeatController /seats
-- flightController /flights
-- bookingController /bookings
+- FlightController /flights
+- BookingController /bookings
   
 ## Services
 Exista 7 servicii create cate una pentru fiecare entitate in parte.
-- UserService 
+- PassengerService 
 - ScheduleService 
-- destinationService 
-- airplaneService  
+- DestinationService 
+- AirplaneService  
 - SeatService  
-- flightService  
-- bookingService  
+- FlightService  
+- BookingService  
   
 ```Java 
 @Service
@@ -253,7 +253,7 @@ public class airplaneRequest {
 
 ## :high_brightness: SWAGGER DOCS
 
-![Swagger](https://github.com/bottestBot/Cinema-Management-Backend/blob/main/swagger.png?raw=true)
+![Swagger](https://github.com/ClaudiuZabava/Fleasy/blob/main/swagger.png?raw=true)
 
 ```Java
 \\SwaggerConfig.java
