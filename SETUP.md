@@ -8,7 +8,7 @@ SETUP instructions
 1. Open MySQL command line client
 2. Enter the password(if you have set any)
 3. ```mysql> create database fleasy;```
-4. ```mysql> use cinema;```
+4. ```mysql> use fleasy;```
 5. ```mysql> create passenger 'rootAdministrator'@'localhost' identified by 'Parola123';```
 6. ```mysql> grant all privileges on fleasy.* to 'rootAdministrator'@'localhost';```
 7. ```mysql> exit;```
