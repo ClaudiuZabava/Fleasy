@@ -30,7 +30,7 @@ Documentatie
    
 ## :next_track_button: Testing
 
-![Tests](https://github.com/ClaudiuZabava/Fleasy/blob/main/Test.png?raw=true)
+![Tests](https://github.com/ClaudiuZabava/Fleasy/blob/main/Test.PNG?raw=true)
 
 Au fost create atat teste de integrare pentru controllers cat si unit teste pentru servicii.
 
