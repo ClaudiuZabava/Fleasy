@@ -1,4 +1,4 @@
-use cinema;
+use fleasy;
 
 select * from flight;
 select * from passenger;
